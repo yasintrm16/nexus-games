@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+  <head prefix="og: http://ogp.me/ns#">
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:image" content="https://raw.githubusercontent.com/AllureOfTheStars/media/master/icon/safari1.506x506.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="506">
+    <meta property="og:image:height" content="506">
+    <meta property="og:url" content="http://www.allureofthestars.com">
+    <meta property="og:title" content="Allure of the Stars">
+    <meta property="og:description" content="near-future Sci-Fi roguelike and tactical squad combat game">
+    <meta property="og:type" content="website">
+
+    <meta name="description" content="Allure of the Stars : near-future Sci-Fi roguelike and tactical squad combat game" />
+    <meta name="keywords" content="roguelike, squad, turnbased, turnbased tactics, ASCII, browsergame, HTML5, freesoftware, stealth, scifi, indiedev, gamedev, Haskell, PCG, replayability" >
+
+    <title>Allure of the Stars</title>
+
+
+
+<style type="text/css">
+
+  /* Speed: <http://www.w3.org/TR/CSS21/tables.html#fixed-table-layout> */
+  table { table-layout:fixed;border-collapse:collapse;border:none;margin-left:0px; }
+  /* The nudge by one pixel in margin-left above was needed on Chrome to prevent
+     anti-aliasing that sometimes kicked in, ignoring hinting, but now
+     in a newer version of Chrome, on a different machine, 0px is needed. */
+  tr, td { table-layout:fixed;border-collapse:collapse;margin-left:0;margin-right:0;font-family:lambdaHackFont;font-size:16px;padding:0 0 0 0;border:1px solid #000000; }
+/* Even td { height:16px; } doesn't prevent Firefox from inflating cell height up to, e.g., 19.2 plus border. */
+
+@font-face {
+    font-family: lambdaHackFont;
+    src: url("16x16xw.woff");
+  }
+
+a:link           { color: #FFFFFF }  /* unvisited links       */
+a:visited        { color: #B8BFCB }  /* visited links         */
+a:hover, a:focus { color: #FFFFFF }  /* user hovers, or focus */
+a:active         { color: #FFFFFF }  /* active links          */
+
+.cactus-editor-textarea {background-color:black;color:white;font-size:16px;font-family:lambdaHackFont;height:15rem;}
+
+.cactus-editor-above {padding:0;}
+
+.cactus-login-button {display:none;}
+
+</style>
+
+  </head>
+  <body style="color:#C4BEB1; background:#000000; font-family:lambdaHackFont">
+
+    <div>
+
+<table>
+    <tr>
+      <td>
+      <h1 style="letter-spacing:1px">
+       Allure&nbsp;of&nbsp;the&nbsp;Stars&nbsp;
+      </h1>
+      </td>
+        <td>
+      <h4 style="line-height:120%">
+        Press '?' for in-game help or read
+        <a href="https://github.com/AllureOfTheStars/Allure/blob/master/GameDefinition/PLAYING.md" >PLAYING</a>.
+        The game may lag in a&nbsp;browser, but you can download
+        a&nbsp;<a href="http://www.allureofthestars.com" >native binary</a>
+        that is fast, has proportional fonts and can display in fullscreen.
+        If the game window is too large, zoom out
+        (Control-minus) or use the native executable with 8-pixel fonts.
+        Press NumLock if numpad erratic or use another key scheme or mouse.
+      </h4>
+        </td>
+    </tr>
+</table>
+
+    </div>
+
+    <div style="text-align:center;font-size: 16px;">
+  <div style="display:inline-block;" tabindex="0" id="gameMap">
+  &nbsp;
+<div style="text-align:left;font-size:16px;" id="pleaseWait">
+<p>
+  Please wait. Bleeding edge experimental technology of the future is being loaded, <br>
+  which may take 10 or 20 seconds with no apparent progress. <br>
+  Be patient. Do not make hasty keystrokes. Breathtaking letters <br>
+  in sixteen brilliant colors and HD resolution beckon from the other shore.
+<p>
+from README: <br>
+The game runs rather slowly in the browser (fastest on Chrome) <br>
+and you are limited to the square font for both map and texts. <br>
+Savefiles are prone to corruption on the browser, <br>
+e.g., when it's closed while the game is still saving progress. <br>
+Hence, after trying out the game, you may prefer to use a native <br>
+binary for your architecture, if it exists.
+<p>
+Copyright (c) 2008--2021 Andres Loeh, Mikolaj Konarski and others (see git history)
+</div>
+  &nbsp;
+  </div>
+
+</div>
+
+
+    <script language="javascript" src="lz-string.min.js"></script>
+    <script language="javascript" src="allure.all.js"></script>
+
+
+
+  </body>
+</html>

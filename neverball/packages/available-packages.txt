@@ -1,0 +1,49 @@
+package set-easy
+filename set-easy-951b1c615e3134c1343fad9d5f99bee2.zip
+size 3881509
+files set-easy.txt map-easy/easy.sol map-easy/peasy.sol map-easy/coins.sol map-easy/fence.sol map-easy/groundbreak.sol map-easy/goals.sol map-easy/goslow.sol map-easy/slightcurve.sol map-easy/slalom.sol map-easy/lollipop.sol map-easy/bumper.sol map-easy/hole.sol map-easy/speedbumps.sol map-easy/roundlaby.sol map-easy/thwomp2.sol map-easy/easyhalfpipe.sol map-easy/roundcoins.sol map-easy/corners.sol map-easy/greed.sol map-easy/wakka.sol map-easy/maze.sol map-easy/curved.sol map-easy/mover.sol map-easy/bumps.sol map-easy/mazebump.sol
+name Neverball Easy
+desc Difficulty: Beginner through Intermediate\n\n25 levels with a smooth learning curve.\nRead level introductions for gameplay tips.\n \n 
+shot set-easy-3509960213be9c2b02d985fe20e805a0.jpg
+package set-fwp
+filename set-fwp-28548c85cb26dc891e829c4736d3908e.zip
+size 12288351
+files set-fwp.txt map-fwp/atrium.sol map-fwp/swarm.sol map-fwp/tennis.sol map-fwp/slope.sol map-fwp/oddities.sol map-fwp/tree.sol map-fwp/spacetime.sol map-fwp/museum.sol map-fwp/mountains.sol map-fwp/confetti.sol map-fwp/cargo.sol map-fwp/ramps.sol map-fwp/rails.sol map-fwp/discs.sol map-fwp/ufo.sol map-fwp/adventure.sol map-fwp/rings.sol map-fwp/ladybirds.sol map-fwp/buoys.sol map-fwp/inferno.sol
+name Nevermania
+desc Difficulty: Expert through Impossible\n\nAssorted levels for advanced players.\nAuthor: Florian Priester\n\n 
+shot set-fwp-79dd3b6b942c2ef3eb15140247eedf20.png
+package set-hard
+filename set-hard-e269c3a4cfe6a14eba3312afe358aeda.zip
+size 2860974
+files set-hard.txt map-hard/grid.sol map-hard/risers.sol map-hard/curbs.sol map-hard/hump.sol map-hard/pyramid.sol map-hard/rampup.sol map-hard/check.sol map-hard/tilt.sol map-hard/sync.sol map-hard/nostairs.sol map-hard/frogger.sol map-hard/quads.sol map-hard/teleport.sol map-hard/gaps.sol map-hard/hallways.sol map-hard/spiralin.sol map-hard/spread.sol map-hard/invis.sol map-hard/ring.sol map-hard/flip.sol map-hard/movers.sol map-hard/pipe.sol map-hard/paths.sol map-hard/poker.sol map-hard/airways.sol
+name Neverball Hard
+desc Difficulty: Intermediate through Expert\n\n25 levels with more of a challenge for\nthe experienced player. Try to claim\nBest Times, Most Coins, and Fast Unlock records.\n 
+shot set-hard-485b493400c3dbdd932e337e8cd67689.jpg
+package set-medium
+filename set-medium-218ad2e2d1090ad4a4520cb920a97332.zip
+size 4401928
+files set-medium.txt map-medium/locks.sol map-medium/multicurves.sol map-medium/accordian.sol map-medium/zigzag.sol map-medium/roundfloors.sol map-medium/four.sol map-medium/hardrise.sol map-medium/easytele.sol map-medium/cross.sol map-medium/sparselines.sol map-medium/qbert.sol map-medium/stairs.sol map-medium/drops.sol map-medium/telemaze.sol map-medium/learngrow.sol map-medium/spiraldn.sol map-medium/timer.sol map-medium/spiralup.sol map-medium/angle.sol map-medium/coneskeleton.sol map-medium/rampdn.sol map-medium/islands.sol map-medium/plinko.sol map-medium/title.sol map-medium/woodmaze.sol
+name Neverball Medium
+desc Difficulty: Beginner through Expert\n\n25 levels which provide a balanced\nchallenge for players. Try to claim\nsome of the records provided.\n 
+shot set-medium-64366be273abb98f92969b4df982ef8b.jpg
+package set-mym
+filename set-mym-7a9fd02ca8e2b8ce9253ad12bab06754.zip
+size 5895872
+files set-mym.txt map-mym/descent.sol map-mym/dance1.sol map-mym/drive1.sol map-mym/scrambling.sol map-mym/earthquake.sol map-mym/glasstower.sol map-mym/trust.sol map-mym/loop1.sol map-mym/maze1.sol map-mym/snow.sol map-mym/circuit1.sol map-mym/comeback.sol map-mym/maze2.sol map-mym/circuit2.sol map-mym/ghosts.sol map-mym/turn.sol map-mym/assault.sol map-mym/narrow.sol map-mym/loop2.sol map-mym/up.sol map-mym/drive2.sol map-mym/running.sol map-mym/climb.sol map-mym/hard.sol map-mym/dance2.sol
+name Tour de force
+desc Difficulty: Expert through Insane\n\n25 levels with even greater challenge.\nAuthor: Mehdi Yousfi-Monod (mym)\n \n 
+shot set-mym-195b80e1797a84d61436266b7c360397.jpg
+package set-mym2
+filename set-mym2-be65b2879aa1868d95b1c66908cbfc46.zip
+size 7409304
+files set-mym2.txt map-mym2/sonic.sol map-mym2/movinglumps.sol map-mym2/backforth.sol map-mym2/webs.sol map-mym2/speeddance.sol map-mym2/translation.sol map-mym2/movingpath.sol map-mym2/bigball.sol map-mym2/bounces.sol map-mym2/rainbow.sol map-mym2/bombman.sol map-mym2/runstop.sol map-mym2/fall.sol map-mym2/updown.sol map-mym2/basket.sol map-mym2/longpipe.sol map-mym2/bigcone.sol map-mym2/rodeo.sol map-mym2/littlecones.sol map-mym2/shaker.sol map-mym2/push.sol map-mym2/grinder.sol map-mym2/speed.sol map-mym2/morenarrow.sol map-mym2/freefall.sol
+name Retour de force
+desc Difficulty: A little bit harder than my first set.\n\nMore challenge, particularly for grabbing coins.\nAuthor: Mehdi Yousfi-Monod (mym)\n \n 
+shot set-mym2-1077b3426f6d966c517e03d683cbcf61.jpg
+package set-tones
+filename set-tones-b42d4f59f2cffbdfcc522ad1ad6f2714.zip
+size 4931664
+files set-tones.txt map-tones/hurdles.sol map-tones/easyian.sol map-tones/canals.sol map-tones/marble.sol map-tones/check.sol map-tones/easyone.sol map-tones/swoop.sol map-tones/waves.sol map-tones/discs.sol map-tones/bigtube.sol map-tones/blue.sol map-tones/swish.sol map-tones/leaps.sol map-tones/bumperoo.sol map-tones/skiball.sol map-tones/city.sol map-tones/tonesmaze.sol map-tones/hotwheels.sol map-tones/twisted.sol map-tones/runner.sol
+name Tones Levels
+desc Difficulty: Moderate to Difficult.\n\nAuthor: Ian Walker\n\n 
+shot set-tones-0eabdd86c562b368c6455a826439b4cf.jpg

@@ -1,0 +1,98 @@
+#!/usr/bin/env -S run-cargo-script
+//! ```cargo
+//! [package]
+//! edition = "2018"
+//! [dependencies]
+//! regex = "1"
+//! ```
+
+// Note: requires Rust and cargo-script to be installed.
+// To install Rust, follow:
+// https://www.rust-lang.org/tools/install
+// Then run:
+// cargo install cargo-script
+
+// Read levels files from the original Duckmaze, and emit them
+// as JavaScript code to paste into Duckmaze 2.
+
+use regex::Regex;
+use std::io::{self, BufReader};
+use std::io::prelude::*;
+use std::fs::{read_dir, File};
+
+fn to_width(s: &str, w: usize) -> String {
+    let mut ret = String::with_capacity(w);
+    ret.push_str(s);
+    while ret.len() < w {
+        ret.push(' ');
+    }
+    ret
+}
+
+fn main() -> io::Result<()> {
+
+    let mut level_files = read_dir("../../duckmaze/levels")?
+        .map(|res| res.map(|e| e.path()))
+        .collect::<Result<Vec<_>, io::Error>>()?;
+
+    level_files.sort();
+
+    for path in level_files {
+        readLevel(path.to_str().unwrap());
+    }
+
+    Ok(())
+}
+
+fn readLevel(filename: &str) -> io::Result<()> {
+    let prop_re = Regex::new(r"^(\w+)\s*=\s*(.*)$").unwrap();
+
+    let f = File::open(filename)?;
+    let f = BufReader::new(f);
+
+    println!("    {{");
+
+    let mut level = vec![];
+    for line in f.lines() {
+        let line = line.unwrap();
+        if let Some(caps) = prop_re.captures(&line) {
+            match &caps[1] {
+                "time" => println!("        time: {},", &caps[2]),
+                "background_colour" =>
+                    println!(
+                        "        backgroundColor: [{}],",
+                        &caps[2][1..caps[2].len()-1]
+                    ),
+                "text_colour" => {},
+                "author" => println!("        author: {},", &caps[2]),
+                _ => panic!("Unexpected key: {}", &caps[1]),
+            }
+
+        } else {
+            level.push(line);
+        }
+    }
+
+    let mut width = 0;
+    for ln in level.iter() {
+        if ln.len() > width {
+            width = ln.len();
+        }
+    }
+
+    println!("        level: [");
+    let mut first = true;
+    for ln in level {
+        if first {
+            first = false;
+        } else {
+            println!(",");
+        }
+        print!("            \"{}\"", to_width(&ln, width));
+    }
+    println!();
+    println!("        ]");
+    println!("    }},");
+
+    Ok(())
+}

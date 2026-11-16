@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Satranç – Stockfish</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css"/>
+    <link rel="stylesheet" href="./assets/styles/screen.css"/>
+    <style>.chess-console-board{max-width:min(100%,calc(100vh - 100px));margin:0 auto}</style>
+</head>
+<body>
+<div class="container-fluid">
+    <h1 class="h4 my-2">Satranç <small class="text-muted">vs Stockfish 19</small></h1>
+    <div id="console-container" class="mb-3">
+        <div class="row chess-console">
+            <div class="chess-console-center col-xl-7 order-xl-2 col-lg-8 order-lg-1 order-md-1 col-md-12">
+                <div class="chess-console-board"></div>
+            </div>
+            <div class="chess-console-right col-xl-3 order-xl-3 col-lg-4 order-lg-2 col-md-8 order-md-3">
+                <div class="control-buttons buttons-grid mb-4"></div>
+                <div class="chess-console-notifications mb-4"></div>
+                <div class="engine-state mb-4"></div>
+            </div>
+            <div class="chess-console-left col-xl-2 order-xl-1 order-lg-3 col-lg-12 col-md-4 order-md-2">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-4 col-md-12 col-6">
+                        <div class="chess-console-history"></div>
+                    </div>
+                    <div class="col-xl-12 col-lg-8 col-md-12 col-6">
+                        <div class="chess-console-captured"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <p>
+        copyright &copy; <a href="https://shaack.com">shaack.com</a> engineering.<br/>
+        Source code license: <a href="https://github.com/shaack/chess-console/blob/master/LICENSE">MIT</a>.
+        License for the Sounds: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. License of the SVG
+        pieces <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.
+    </p>
+</div>
+<script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- @formatter:off -->
+<script type="importmap">
+    {
+        "imports": {
+            "chess-console/": "./node_modules/chess-console/",
+            "cm-engine-runner/": "./node_modules/cm-engine-runner/",
+            "cm-polyglot/": "./node_modules/cm-polyglot/",
+            "cm-chessboard/": "./node_modules/cm-chessboard/",
+            "cm-web-modules/": "./node_modules/cm-web-modules/",
+            "chess.mjs/": "./node_modules/chess.mjs/",
+            "cm-pgn/": "./node_modules/cm-pgn/",
+            "cm-chess/": "./node_modules/cm-chess/",
+            "bootstrap-show-modal/": "./node_modules/bootstrap-show-modal/"
+        }
+    }
+</script>
+<!-- @formatter:on -->
+<script type="module">
+
+    import {ChessConsole} from "chess-console/src/ChessConsole.js"
+    import {LocalPlayer} from "chess-console/src/players/LocalPlayer.js"
+    import {Board} from "chess-console/src/components/Board.js"
+    import {GameStateOutput} from "chess-console/src/components/GameStateOutput.js"
+    import {History} from "chess-console/src/components/History.js"
+    import {CapturedPieces} from "chess-console/src/components/CapturedPieces.js"
+    import {HistoryControl} from "chess-console/src/components/HistoryControl.js"
+    import {Persistence} from "chess-console/src/components/Persistence.js"
+    import {Sound} from "chess-console/src/components/Sound.js"
+
+    import {StockfishGameControl} from "./src/StockfishGameControl.js"
+    import {StockfishPlayer} from "./src/StockfishPlayer.js"
+    import {StockfishStateView} from "./src/StockfishStateView.js"
+    import {I18n} from "cm-web-modules/src/i18n/I18n.js"
+
+    const i18n = new I18n()
+    i18n.load({
+        de: {
+            playerName: "Spieler"
+        },
+        en: {
+            playerName: "Oyuncu"
+        }
+    })
+    const chessConsole = new ChessConsole(
+        document.getElementById("console-container"),
+        {name: i18n.t("playerName"), type: LocalPlayer},
+        {
+            name: "Stockfish", type: StockfishPlayer, props: {
+                worker: "./node_modules/stockfish/bin/stockfish-19-lite-single.js",
+                book: "./assets/books/openings.bin",
+                level: 1,
+                debug: false
+            }
+        })
+    new Board(chessConsole, {
+        assetsUrl: "./node_modules/cm-chessboard/assets/"
+    }).initialized.then(() => {
+        new Persistence(chessConsole, {
+            savePrefix: "Stockfish"
+        }).load()
+    })
+    new History(chessConsole)
+    new HistoryControl(chessConsole)
+    new CapturedPieces(chessConsole)
+    new StockfishGameControl(chessConsole, {
+        player: chessConsole.opponent
+    })
+    new StockfishStateView(chessConsole, chessConsole.opponent)
+    new GameStateOutput(chessConsole)
+    new Sound(chessConsole, {
+        soundSpriteFile: "./assets/sounds/chess_console_sounds.mp3"
+    })
+</script>
+</body>
+</html>

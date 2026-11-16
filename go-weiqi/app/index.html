@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+ * Copyright (c) 2012, Intel Corporation.
+ *
+ * This program is licensed under the terms and conditions of the
+ * Apache License, version 2.0.  The full text of the Apache License is at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+-->
+<html>
+    <head>
+        <title>Go</title>
+        <meta name="viewport" content="width=device-width target-densitydpi=device-dpi initial-scale=1 maximum-scale=1 user-scalable=0"/>
+        <meta name="author" content="Xinchao He">
+        <link rel="stylesheet" href="css/go.css"/>
+    </head>
+    <body style="overflow:hidden;">
+        <div id="licensepage" style="display: none">
+            <div id="licensetext">
+                <div id="licensescroll">
+                    <br>
+                    <br>
+                    Go is a board game implemented with HTML5/Javascript technology.<br>
+
+                    <br>
+                    Author: Xinchao He &lt;xinchao.he@intel.com&gt;<br>
+                    Owner: Carl Wong &lt;carl.wong@intel.com&gt;<br>
+                    <br>
+                    This application is written using HTML5/css3/jquery javascript library and is<br>
+                    distributed under Apache2.0 license. <br>
+                    <br>
+                    FONTS<br>
+
+                    <br>
+                    Google web font - Yesteryear<br>
+                    http://www.google.com/webfonts/specimen/Yesteryear<br>
+                    SIL Open Font License (OFL) License, version 1.1<br>
+                    <br>
+                    Open Sans<br>
+                    http://www.fontsquirrel.com/fonts/open-sans<br>
+                    Apache License, version 2.0<br>
+                    License: http://www.fontsquirrel.com/license/open-sans<br>
+                    <br>
+                    Wen Quan Yi Micro Hei<br>
+                    http://wenq.org/index.cgi?MicroHei<br>
+                    License: http://wenq.org/index.cgi?MicroHei_BigBang_README<br>
+                    <br>
+                    SOUNDS<br>
+
+                    <br>
+                    Pieces_SinglePlaced_Alt.wav, Pieces_SinglePlaced.wav, <br>
+                    PiecesFillPocket.wav, SettingsAppearWoodSlide.wav<br>
+                    These files were created by Intel Corp. and are licensed under <br>
+                    the Creative Commons Attribution 3.0 license<br>
+                    http://creativecommons.org/licenses/by/3.0/us/<br>
+                    <br>
+                    ClockTicking_Loop.wav<br>
+                    Origin: http://www.freesound.org/people/hdesbois/sounds/53689/<br>
+                    License: http://creativecommons.org/licenses/sampling+/1.0/legalcode<br>
+                    <br>
+                    GameEndChimes.wav<br>
+                    Origin: http://www.freesound.org/people/zeuss/sounds/22267/<br>
+                    License: http://creativecommons.org/licenses/sampling+/1.0/legalcode<br>
+                    <br>
+                    PositiveSound.wav<br>
+                    Origin: http://www.freesound.org/people/reinsamba/sounds/35631/<br>
+                    License: http://creativecommons.org/licenses/by/3.0/<br>
+                    <br>
+                    SettingsButton.wav<br>
+                    Origin: http://www.freesound.org/people/junggle/sounds/29301/<br>
+                    License: http://creativecommons.org/licenses/by/3.0/<br>
+                    <br>
+                    SettingsButtonCheck.wav<br>
+                    Origin: http://www.freesound.org/people/FreqMan/sounds/31592/<br>
+                    License: http://creativecommons.org/licenses/by/3.0/<br>
+                    <br>
+                    IMAGES<br>
+
+                    <br>
+                    all images are created by Intel Corp.<br>
+                    they are licensed under the Creative Commons Attribution 3.0 license<br>
+                    http://creativecommons.org/licenses/by/3.0/us/<br>
+                    <br>
+                    <br></carl.wong@intel.com>
+                </div>
+            </div>
+            <div id="licensebtnq" class="licensebtn">Back</div>
+        </div>
+        <div id="theworld" class="world">
+            <div class="left_pit"></div>
+            <div class="right_pit"></div>
+            <div class="left_arrow" align="center">
+                <span id="playerone"></span><br>
+                <span style="font-size:22pt;"><span name="score"></span>:<span id="left_score">0000</span></span>
+                <img class="player_arrow_img" src="images/GO_PlayerArrow_010612_a.png" />
+            </div>
+            <div class="right_arrow" align="center">
+                <span id="playertwo"></span><br>
+                <span style="font-size:22pt;"><span name="score"></span>:<span id="right_score">0000</span></span>
+                <img class="player_arrow_img" src="images/GO_PlayerArrow_010612_a.png" />
+            </div>
+            <img class="left_time_arrow" src="images/GO_TimerArrow_022212_a.png" />
+            <img class="right_time_arrow" src="images/GO_TimerArrow_022212_a.png" />
+            <div class="left_timer">
+                <img src="images/GO_Timer_010612_a.png" />
+                <span>20:00</span>
+            </div>
+            <div class="right_timer">
+                <img src="images/GO_Timer_010612_a.png" />
+                <span>20:00</span>
+            </div>
+            <a class="left_skip skip_arrow">
+            </a>
+            <a class="right_skip skip_arrow">
+            </a>
+            <a class="setting_icon"><img src="images/GO_SettingsIcon_010612_a.png" /></a>
+            <a class="undue_icon_left"><img src="images/GO_ReplayArrow_012012_b.png" /></a>
+            <a class="undue_icon_right"><img src="images/GO_ReplayArrow_012012_b.png" /></a>
+            <a class="play_button display_none">
+                <div class="play_button_img">
+                    <span class="play_button_text text_shadow"></span>
+                </div>
+            </a>
+            <div class="setting_panel text_shadow display_none"></div>
+            <div class="help_panel display_none"></div>
+            <div class="win_panel text_shadow display_none"></div>
+            <div class="board"></div>
+        </div>
+        <script src="lib/intel-appframework/build/appframework.min.js"></script>
+        <script type="text/javascript" src="js/scaleBody.js"></script>
+        <script type="text/javascript" src="js/go.js"></script>
+    </body>
+</html>

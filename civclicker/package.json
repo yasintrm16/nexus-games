@@ -1,0 +1,39 @@
+{
+  "name": "civ-clicker",
+  "version": "1.4.0",
+  "description": "Incremental Game - A Civilization in Your Browser",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "serve": "npx http-server",
+    "lint": "eslint ./",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "eslint": "^8.27.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^27.1.4",
+    "http-server": "^14.1.1",
+    "jest": "^29.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deathraygames/civ-clicker.git"
+  },
+  "keywords": [
+    "incremental",
+    "civilization",
+    "clicker"
+  ],
+  "authors": [
+    "Katherine Stark",
+    "Scott A. Colcord",
+    "Luke Nickerson"
+  ],
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/deathraygames/civ-clicker/issues"
+  },
+  "homepage": "https://github.com/deathraygames/civ-clicker#readme"
+}

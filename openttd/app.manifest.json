@@ -1,0 +1,73 @@
+{
+  "id": "openttd",
+  "version": "1.0.0",
+  "protocol": 1,
+  "kit": ">=1 <2",
+  "windows": [
+    {
+      "window": "openttd",
+      "app": "openttd",
+      "entry": "index.html",
+      "titleKey": "openttd_title",
+      "windowClass": "openttd-window extracted-app-window",
+      "paneClass": "openttd-pane",
+      "frameClass": "openttd-frame",
+      "statusClass": "openttd-details-bar",
+      "allow": "fullscreen",
+      "phone": 2,
+      "size": {
+        "width": "960px",
+        "height": "640px"
+      },
+      "status": {
+        "loading": "openttd_status_loading",
+        "failed": "openttd_status_timeout"
+      },
+      "capabilities": [
+        "state",
+        "snapshot",
+        "wake"
+      ],
+      "menus": [
+        {
+          "id": "file",
+          "labelKey": "menu_file",
+          "items": [
+            {
+              "type": "item",
+              "action": "close-active-window",
+              "labelKey": "close",
+              "shortcutId": "close-window",
+              "conditionId": "close-active-window"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "intents": [],
+  "strings": {
+    "en": {
+      "openttd_title": "OpenTTD",
+      "openttd_status_loading": "Loading the game…",
+      "openttd_status_running": "Running",
+      "openttd_status_paused": "Paused · Return to the window to continue",
+      "openttd_status_exited": "Game over. Close the window when you are done.",
+      "openttd_status_crashed": "The game crashed.",
+      "openttd_status_timeout": "The game took too long to respond.",
+      "openttd_status_missing_binary": "OpenTTD Wasm is not in this build. Rebuild with build/build.md.",
+      "openttd_retry": "Retry game"
+    },
+    "zh": {
+      "openttd_title": "OpenTTD 运输大亨",
+      "openttd_status_loading": "正在装载游戏……",
+      "openttd_status_running": "运行中",
+      "openttd_status_paused": "已暂停 · 回到窗口即可继续",
+      "openttd_status_exited": "游戏结束。玩好了就把窗口关上吧。",
+      "openttd_status_crashed": "游戏出错了。",
+      "openttd_status_timeout": "游戏响应超时。",
+      "openttd_status_missing_binary": "此构建未包含 OpenTTD Wasm。请按 build/build.md 重新构建。",
+      "openttd_retry": "重试游戏"
+    }
+  }
+}

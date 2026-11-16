@@ -1,0 +1,1 @@
+import{a5 as a,a6 as s,a7 as o,a8 as t,a9 as c,aa as d,p as u}from"./useCleanup-qdbmwOdJ.js";const p=a("root/hydrateState"),n=s({players:u,board:d,dice:c,session:t}),R=(r,e)=>e.type===p.type?e.payload:n(r,e),y=o({reducer:R,devTools:!1});export{p as h,y as s};

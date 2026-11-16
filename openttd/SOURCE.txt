@@ -1,0 +1,107 @@
+AI System 6 OpenTTD browser build — source note
+
+Every statement below is quoted from build/build.md, from a file in
+build/patches/, or from a file header in the OpenTTD page. Where those
+sources do not say, this note says "not stated".
+
+Engine and version
+  build/build.md, Inputs table, row "OpenTTD source":
+    Where: "external/OpenTTD (git-ignored)"
+    Version: "15.3 (openttd-15.3-source.tar.xz from cdn.openttd.org)"
+    The unmodified upstream source archive of that name is kept in this
+    project's repository for the game, beside the build folder.
+    License: "GPLv2"
+  Exact source commit: not stated.
+  A full download URL: not stated. The notes name cdn.openttd.org and the
+  archive file name, and do not give a URL.
+
+Where the corresponding source is
+  The same Inputs row: the git-ignored checkout external/OpenTTD, at the
+  version and archive name quoted above.
+  build/build.md does not say that archive, or any other OpenTTD source
+  archive, is shipped in this tree.
+
+Patches
+  build/build.md, heading "Patches (apply to external/OpenTTD before you
+  configure)". The files in build/patches/ are the two named there.
+
+  1. build/patches/FindFreetype.cmake.
+     build/build.md: "copy to os/emscripten/cmake/. Maps find_package(Freetype)
+     to the emscripten FreeType port (-sUSE_FREETYPE=1). This is the whole
+     FreeType change: the top-level CMakeLists already calls
+     find_package(Freetype) on non-Apple Unix targets, which includes
+     emscripten."
+     The file's own header: "The upstream wasm build does not compile
+     FreeType, so it cannot show Chinese text. This shim maps
+     find_package(Freetype) to the emscripten FreeType port and makes the
+     zh_CN UI possible."
+     Licence of this file: GPL-2.0-only, as marked in its first line.
+
+  2. build/patches/emscripten-zh.patch.
+     build/build.md: "emscripten-zh.patch → CMakeLists.txt, os/emscripten/pre.js,
+     src/network/network.cpp, src/core/random_func.cpp, and
+     src/fontcache/freetypefontcache.cpp", then these bullets:
+     "preload lang/simplified_chinese.lng and the /font directory";
+     "quote every path flag in the WASM link block (a source path with a
+     space, like this repository's, breaks the raw flags)";
+     "seed a default openttd.cfg on first run from Module.openttdDefaultConfig,
+     and rewrite the resolution line on every boot (the SDL port does not
+     follow canvas size changes)";
+     "export em_openttd_set_resolution(w, h) so the shell page can resize the
+     live game surface on phone rotation and window resizing";
+     "use the bare HEAPU8 view, not Module.HEAPU8, in the random-seed EM_ASM
+     block. Emscripten stopped attaching the heap views to Module after 3.1.x,
+     so on newer toolchains the upstream code throws TypeError: ... (reading
+     'subarray') on the first world generation (the title screen still boots —
+     the seed request is the first caller)";
+     "map U+00A0 and U+2003 to the regular space glyph in the FreeType cache.
+     Fusion Pixel omits these invisible spacing outlines, but OpenTTD otherwise
+     treats them as missing-language-glyph errors and blocks first launch with
+     a warning."
+     Licence of this file: GPL-2.0-only, as marked in its first line.
+
+  The same section's item 3 is not a file in build/patches/. Quoted from
+  build/build.md: "emsdk has no LibLZMA port (checked through 6.0.6). Copy
+  os/emscripten/ports/liblzma.py to upstream/emscripten/tools/ports/contrib/liblzma.py
+  in the active emsdk tree (the same step upstream's Dockerfile does).
+  Savegames need LZMA."
+
+Toolchain
+  build/build.md, Inputs table, Toolchain row, Version column:
+    "emsdk 6.0.6 (upstream CI pins 3.1.57; 6.0.6 is verified in-browser)"
+  Host tools row: "cmake ≥ 3.16, ninja" and "Homebrew".
+  Exact CMake version: not stated.
+  Exact Ninja version: not stated.
+  Licence of the toolchain: the License column for both rows is "—".
+
+Other inputs named in that table
+  Base graphics: "external/openttd-assets/unpacked/opengfx-8.0",
+  "OpenGFX 8.0", "GPLv2".
+  CJK pixel font: "external/openttd-assets/unpacked/fusion-proportional",
+  "Fusion Pixel 12px zh_hans, v2026.08.11", "OFL-1.1".
+  build/build.md: "Sound and music stay off: upstream starts the wasm build
+  with the null sound and music drivers (pre.js passes -mnull -snull), so
+  OpenSFX/OpenMSX data would only grow the download."
+  Licence of OpenSFX or OpenMSX: not stated.
+
+What the build copies into this tree
+  build/build.md: the script "copies openttd.js / openttd.wasm / openttd.data
+  into apps/desktop/apps/openttd/. Those three artifacts are committed to git".
+  "The --preload-file link step packs them into openttd.data" — "them" in that
+  sentence is "the font and OpenGFX".
+  A single licence for openttd.js, openttd.wasm, or openttd.data: not stated
+  in those files. openttd.js contains no SPDX, GPL, License, or Copyright
+  string. The OpenTTD source row, quoted above, says "GPLv2". The packed
+  OpenGFX row says "GPLv2". The packed font row says "OFL-1.1".
+
+This project's adapters, and their licence
+  build/build.md: "The touch layer is not in the engine: the shell page
+  apps/desktop/apps/openttd/index.html owns it."
+  That page, read in this worktree at apps/desktop/apps/openttd/index.html,
+  contains:
+    <script src="shell.js"></script>
+    <script src="openttd.js"></script>
+  Licence of index.html: GPL-2.0-only, as marked in the file.
+  Licence of shell.js: GPL-2.0-only, as marked in the file.
+  build/build.md does not name shell.js and does not state a licence for the
+  shell page.

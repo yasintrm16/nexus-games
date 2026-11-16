@@ -1,0 +1,11 @@
+image: alpine:latest
+
+pages:
+  stage: deploy
+  script:
+  - echo "Publishing pages to" $CI_PAGES_URL
+  artifacts:
+    paths:
+    - public
+  only:
+  - master

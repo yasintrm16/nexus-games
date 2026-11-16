@@ -1,0 +1,2 @@
+NEXUS notu: client/music/ klasörü (5 .xm parça, The Mod Archive) lisansı belirsiz olduğu için kaldırıldı.
+Oyun müziksiz sorunsuz çalışıyor. Kod MIT/GPL-3.0, görseller ve efektler lisanslı.

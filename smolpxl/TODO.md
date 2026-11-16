@@ -1,0 +1,10 @@
+- [x] Integrate multi-player support from Tron
+- [ ] Complete remote support in Rightwaves
+- [ ] Integrate remote support
+- [ ] Combine remote with multi-player, Tron can be multi-player remote
+- [ ] Add high score tables
+- [ ] Add new features to old apps:
+  - [ ] redefine keys
+  - [ ] multi-player
+  - [ ] remote play
+- [ ] Multi-player touch controls

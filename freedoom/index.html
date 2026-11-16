@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Freedoom</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #000; color: #ddd; font: 16px system-ui, sans-serif; }
+  #menu { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; text-align: center; padding: 16px; }
+  h1 { margin: 0; font-size: 48px; letter-spacing: 6px; color: #c33; text-shadow: 0 3px 0 #400; }
+  button { font: bold 18px system-ui; padding: 12px 22px; min-width: 260px; background: #3a0d0d; color: #fff; border: 2px solid #c33; border-radius: 6px; cursor: pointer; }
+  button:disabled { opacity: .5; cursor: wait; }
+  button:hover:not(:disabled) { background: #5a1414; }
+  p { margin: 0; color: #999; max-width: 560px; font-size: 14px; line-height: 1.5; }
+  canvas:focus { outline: none; }
+  canvas { display: none; width: 100vw; height: 100vh; object-fit: contain; image-rendering: pixelated; background: #000; }
+</style>
+</head>
+<body>
+<div id="menu">
+  <h1>FREEDOOM</h1>
+  <p id="status">Motor yükleniyor…</p>
+  <button data-wad="freedoom1.wad" disabled>Phase 1 — 4 bölüm, 36 harita</button>
+  <button data-wad="freedoom2.wad" disabled>Phase 2 — 32 harita</button>
+  <p>W/S: ileri-geri · A/D: yana kay · ←/→: dön · Boşluk: ateş · E: kapı/kullan · Shift: koş · 1-7: silah · Esc: menü</p>
+  <p>Chocolate Doom motoru (GPL-2.0, cloudflare/doom-wasm) + Freedoom içerikleri (BSD-3-Clause). Orijinal id Software verisi içermez.</p>
+</div>
+<canvas id="canvas" tabindex="-1" oncontextmenu="event.preventDefault()"></canvas>
+<script>
+  var canvas = document.getElementById('canvas');
+  var buttons = document.querySelectorAll('button[data-wad]');
+  var msg = document.getElementById('status');
+  var Module = {
+    canvas: canvas,
+    noInitialRun: true,
+    noExitRuntime: true,
+    print: function (t) { console.log(t); },
+    printErr: function (t) { console.warn(t); },
+    preRun: function () {
+      try { Module.FS.mkdir('/savefiles'); } catch (e) {}
+      Module.FS.createPreloadedFile('', 'default.cfg', 'default.cfg', true, true);
+    },
+    onRuntimeInitialized: function () {
+      msg.textContent = 'Bir oyun seç:';
+      buttons.forEach(function (b) { b.disabled = false; });
+    }
+  };
+  buttons.forEach(function (b) {
+    b.onclick = async function () {
+      buttons.forEach(function (x) { x.disabled = true; });
+      msg.textContent = 'Harita verisi indiriliyor (~28 MB)…';
+      var wad = b.dataset.wad;
+      try { Module.FS.writeFile(wad, new Uint8Array(await (await fetch(wad)).arrayBuffer())); }
+      catch (e) { msg.textContent = 'İndirme başarısız: ' + e; buttons.forEach(function (x) { x.disabled = false; }); return; }
+      document.getElementById('menu').style.display = 'none';
+      canvas.style.display = 'block';
+      canvas.focus();
+      // Single-player only: no -servername/-autojoin, so the WebSocket netcode stays idle.
+      callMain(['-iwad', wad, '-window', '-nogui', '-nomusic', '-config', 'default.cfg', '-savedir', '/savefiles']);
+    };
+  });
+</script>
+<script src="websockets-doom.js"></script>
+</body>
+</html>
